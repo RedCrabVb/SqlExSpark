@@ -6,7 +6,7 @@ import ru.alex.config.ConfigBD
 abstract class Task(spark: SparkSession) extends ConfigBD {
   def make(): DataFrame = ???
 
-  protected def tableLoad(spark: SparkSession, tableName: String): DataFrame = {
+  protected def tableLoad(tableName: String): DataFrame = {
     spark.read
       .format(format)
       .option("driver", drive)
