@@ -1,7 +1,7 @@
 package ru.alex
 
 import org.apache.spark.sql.SparkSession
-import ru.alex.task.{Task1, Task2, Task3, Task5, TaskTestCreateDataFrame}
+import ru.alex.task._
 
 object Main {
   def main(args: Array[String]): Unit = {
@@ -14,6 +14,6 @@ object Main {
 
     spark.sparkContext.setLogLevel("ERROR")
 
-    new Task5().make.show()
+    new Task6().make.show()
   }
 }
