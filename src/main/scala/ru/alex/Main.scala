@@ -1,6 +1,7 @@
 package ru.alex
 
-import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.{DataFrame, SparkSession}
+import org.apache.spark.storage.StorageLevel
 import ru.alex.task._
 
 object Main {
@@ -14,6 +15,10 @@ object Main {
 
     spark.sparkContext.setLogLevel("ERROR")
 
-    new Task6().make.show()
+    val df: DataFrame = new Task6().make
+
+    df.persist(StorageLevel.DISK_ONLY)
+
+    saveDF(df, "parquet", "snappy")
   }
 }
