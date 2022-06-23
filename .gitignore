@@ -3,4 +3,5 @@ target/
 /.idea/
 project/target/
 log
-./out/
+out/
+input/

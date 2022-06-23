@@ -15,10 +15,21 @@ object Main {
 
     spark.sparkContext.setLogLevel("ERROR")
 
-    val df: DataFrame = new Task6().make
 
-    df.persist(StorageLevel.DISK_ONLY)
+    val df: DataFrame = new TaskPersistence().make.persist(StorageLevel.DISK_ONLY)
 
-    saveDF(df, "parquet", "snappy")
+
+    val df2 = df.union(df).union(df)
+      .where("tags == 'Все'").select("title", "text")
+
+    println(df2.persist())
+    println("df2" + df2.count())
+    println("df" + df.count())
+
+    df2.show()
+
+//    df.persist(StorageLevel.DISK_ONLY)
+
+//    saveDF(df, "parquet", "snappy")
   }
 }
