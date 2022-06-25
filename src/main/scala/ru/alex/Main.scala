@@ -16,7 +16,7 @@ object Main {
     spark.sparkContext.setLogLevel("ERROR")
 
 
-    val df: DataFrame = new Task11().make
+    val df: DataFrame = new Task12().make
 
     df.printSchema()
     df.show()
